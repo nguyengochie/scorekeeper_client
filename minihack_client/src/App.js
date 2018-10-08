@@ -5,6 +5,7 @@ import { Container } from 'reactstrap';
 import NewGame from './Components/NewGame';
 import PlayGame from './Components/PlayGame/index';
 import axios from 'axios';
+import { API_ROOT } from './statics';   
 class App extends Component {
   state = {
     game: null,
@@ -13,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     const { gameId } = this.state;
-    axios.get(`http://localhost:6969/api/game/${gameId}`)
+    axios.get(`${API_ROOT}/game/${gameId}`)
       .then(response => {
         if(response.data && response.data.success) {
           this.setState({ game: response.data.game });
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   updateGameState = (gameData) => {
-    axios.put(`http://localhost:6969/api/game`, { gameId: gameData._id, scores: gameData.scores } )
+    axios.put(`${API_ROOT}/api/game`, { gameId: gameData._id, scores: gameData.scores } )
       .then(response => {
         if(response.data && response.data.success) {
           console.log("success");

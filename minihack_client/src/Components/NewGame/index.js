@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Form, FormGroup, Input, Button } from 'reactstrap';
-
+import { API_ROOT } from '../../statics';
 class NewGame extends Component {
     state = {
         players: ['', '', '', '']
@@ -14,7 +14,7 @@ class NewGame extends Component {
         const { players } = this.state;
 
         axios({
-            url: 'http://localhost:6969/api/game',
+            url: `${API_ROOT}/api/game`,
             method: 'POST',
             data: {
                 players,

@@ -1,0 +1,1 @@
+export const API_ROOT = process.env.PORT ? 'https://score-keeper-hieu.herokuapp.com' :'https://localhost:6969';
